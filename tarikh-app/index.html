@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>تاريخ الجزائر</title>
+  <link rel="stylesheet" href="style.css">  <link rel="manifest" href="manifest.json" />  
+<meta name="theme-color" content="#4CAF50" />  <meta name="application-name" content="تاريخ الجزائر" /></head>
+<body>
+  <div class="quiz-container">
+    <h1>تاريخ الجزائر</h1>
+    <div id="quiz-info">
+      <div id="question-number">السؤال 1 من 10</div>
+      <div id="question">نص السؤال يظهر هنا</div>
+    </div>
+    <div id="answers"></div>
+    <button id="next-btn">التالي</button>
+    <div id="score-container" class="hide">
+      <h2>نتيجتك</h2>
+      <p id="score-text"></p>
+      <button onclick="startQuiz()">ابدأ من جديد</button>
+    </div>
+  </div>
+  <script src="script.js"></script>  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch((error) => console.error('Service Worker failed:', error));
+  }
+</script>
+
+</body>
+</html>
