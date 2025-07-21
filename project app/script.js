@@ -36,6 +36,7 @@ function playSound(name) {
 
 // ==== EVENT LISTENERS ====
 closeIntroBtn.addEventListener("click", () => {
+  console.log("Intro closed, starting quiz...");
   introScreen.classList.add("hidden");
   quizContainer.classList.remove("hidden");
   playSound("intro");
