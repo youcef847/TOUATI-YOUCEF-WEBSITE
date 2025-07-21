@@ -1,6 +1,6 @@
 ﻿// ==== DOM ELEMENTS ====
 const introScreen = document.getElementById("intro-screen");
-const closeIntroBtn = document.getElementById("close-intro");
+const closeIntroBtn = document.getElementById("close-intro-btn");
 const quizContainer = document.getElementById("quiz-container");
 const questionText = document.getElementById("question-text");
 const answersContainer = document.getElementById("answers-container");
