@@ -37,7 +37,7 @@ function playSound(name) {
 // ==== EVENT LISTENERS ====
 closeIntroBtn.addEventListener("click", () => {
   introScreen.classList.add("hidden");
-  quizContainer.style.display = "block";
+  quizContainer.classList.remove("hidden");
   playSound("intro");
   loadLevel(currentLevel);
 });
