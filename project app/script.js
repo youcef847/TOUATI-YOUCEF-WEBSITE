@@ -76,10 +76,17 @@ function loadLevel(level) {
 
 function showQuestion() {
   const q = questions[currentQuestionIndex];
+  console.log("📣 Showing question:", q); // ← Add this line
+
+  if (!q || !q.question || !Array.isArray(q.answers ?? q.choices)) {
+    console.error("❌ Invalid question object:", q);
+    return;
+  }
+
   questionText.textContent = q.question;
   answersContainer.innerHTML = "";
 
-  q.answers.forEach((choice, i) => {
+  (q.answers || q.choices).forEach((choice, i) => {
     const btn = document.createElement("button");
     btn.textContent = choice;
     btn.classList.add("answer-btn");
@@ -89,7 +96,9 @@ function showQuestion() {
 
   const totalQuestionNum = (currentLevel - 1) * 10 + currentQuestionIndex + 1;
   if (totalQuestionNum % 10 === 0) {
-    startTimer(() => handleWrongAnswer());
+    startTimer(() => {
+      handleWrongAnswer();
+    });
   } else {
     stopTimer();
   }
