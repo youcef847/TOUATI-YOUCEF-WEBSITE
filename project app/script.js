@@ -75,6 +75,7 @@ function loadLevel(level) {
 }
 
 function showQuestion() {
+  quizContainer.classList.remove("hidden"); // ✅ Make sure it's visible
   const q = questions[currentQuestionIndex];
   console.log("📣 Showing question:", q); // ← Add this line
 
@@ -180,4 +181,3 @@ function loadProgress() {
 // ==== INITIALIZATION ====
 loadProgress();
 introScreen.classList.remove("hidden");
-quizContainer.style.display = "none";
