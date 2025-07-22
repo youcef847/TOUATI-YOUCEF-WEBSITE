@@ -164,6 +164,7 @@ function handleLevelComplete() {
     // After 10 seconds, go to next level
     setTimeout(() => {
       document.getElementById("celebration-screen").classList.add("hidden");
+      document.getElementById("quiz-container").classList.remove("hidden");
       quizContainer.classList.remove("hidden");
       currentLevel++;
       saveProgress();
