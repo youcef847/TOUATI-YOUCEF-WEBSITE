@@ -47,6 +47,16 @@ muteBtn.addEventListener("click", () => {
   muted = !muted;
   muteBtn.textContent = muted ? "🔇" : "🔊";
 });
+const restartBtn = document.getElementById("restart-btn");
+
+restartBtn.addEventListener("click", () => {
+  if (confirm("هل أنت متأكد أنك تريد إعادة اللعبة؟")) {
+    currentLevel = 1;
+    score = 0;
+    saveProgress();
+    loadLevel(currentLevel);
+  }
+});
 
 // ==== QUIZ FUNCTIONS ====
 function loadLevel(level) {
@@ -135,12 +145,24 @@ function handleLevelComplete() {
 
   if (currentLevel % 10 === 0) {
     playSound("hundredComplete");
-    alert(`🎉 تهانينا! أكملت ${currentLevel * 10} سؤالاً!`);
-  }
 
-  currentLevel++;
-  saveProgress();
-  loadLevel(currentLevel);
+    // Show celebration screen
+    document.getElementById("quiz-container").classList.add("hidden");
+    document.getElementById("celebration-screen").classList.remove("hidden");
+
+    // After 10 seconds, go to next level
+    setTimeout(() => {
+      document.getElementById("celebration-screen").classList.add("hidden");
+      quizContainer.classList.remove("hidden");
+      currentLevel++;
+      saveProgress();
+      loadLevel(currentLevel);
+    }, 10000);
+  } else {
+    currentLevel++;
+    saveProgress();
+    loadLevel(currentLevel);
+  }
 }
 
 // ==== TIMER ====
