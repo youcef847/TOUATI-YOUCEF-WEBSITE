@@ -1,68 +1,0 @@
-﻿<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لعبة سؤال وجواب</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div id="app">
-    <!-- Mute Button -->
-    <button id="mute-btn">🔊</button>
-
-    <!-- Intro Screen -->
-    <div id="intro-screen">
-      <h1>🎁 مرحباً بك في لعبة الثقافة العامة!</h1>
-      <p>أجب عن الأسئلة واحصل على مفاجأة عند الوصول للسؤال 100!</p>
-      <button id="close-intro" class="start-btn">ابدأ اللعبة</button>
-    </div>
-
-    <!-- Start Screen -->
-    <div id="start-screen" class="hidden">
-      <h2>اضغط لبدء اللعبة</h2>
-      <button id="start-btn">ابدأ اللعبة</button>
-    </div>
-
-    <!-- Quiz Container -->
-    <div id="quiz-container" class="hidden">
-      <div id="timer"></div>
-      <div id="question-text"></div>
-      <div id="answers-container"></div>
-      <div id="score-display"></div>
-      <div id="level-display"></div>
-      <button id="next-btn" class="hidden">السؤال التالي</button>
-      <button id="restart-btn">إعادة</button>
-      <button id="exit-btn">خروج</button>
-    </div>
-
-    <!-- Result Popup -->
-    <div id="result-container" class="popup hidden"></div>
-
-    <!-- Level Complete Message -->
-    <div id="next-level-container" class="popup hidden"></div>
-
-    <!-- Celebration Screen -->
-    <div id="celebration-screen" class="hidden">
-      <h2>مبروك! استعد لمجموعة جديدة من الأسئلة!</h2>
-    </div>
-
-    <!-- Final Screens -->
-    <div id="final-screen" class="hidden">
-      <div id="final-bad-ending" class="hidden">
-        <h2>لقد أكملت اللعبة لكن للأسف لم تحقق النقاط المطلوبة.</h2>
-        <p>حاول مرة أخرى لتحصل على الجائزة!</p>
-      </div>
-      <div id="final-good-ending" class="hidden">
-        <h2>تهانينا 🎉</h2>
-        <p>لقد أكملت اللعبة برصيد ممتاز، وهذا يخولك للحصول على هدايا اللعبة!</p>
-        <p>رمزك السري هو: <strong>WIN100</strong></p>
-        <p>راسلنا عبر البريد: <strong>game@gift.com</strong></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Script at the END of body -->
-  <script src="script.js"></script>
-</body>
-</html>
