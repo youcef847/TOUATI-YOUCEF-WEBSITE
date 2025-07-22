@@ -24,7 +24,6 @@ const sounds = {
   correct: new Audio("assets/sounds/correct.mp3"),
   wrong: new Audio("assets/sounds/wrong.mp3"),
   intro: new Audio("assets/sounds/intro.mp3"),
-  levelComplete: new Audio("assets/sounds/level-complete.mp3"),
   hundredComplete: new Audio("assets/sounds/hundred-complete.mp3"),
   goodEnding: new Audio("assets/sounds/good-ending.mp3"),
   tenRight: new Audio("assets/sounds/ten-right.mp3")
@@ -152,7 +151,6 @@ function handleWrongAnswer() {
 }
 
 function handleLevelComplete() {
-  playSound("levelComplete");
 
   if (currentLevel % 10 === 0) {
     playSound("hundredComplete");
