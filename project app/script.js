@@ -138,7 +138,6 @@ function checkAnswer(selectedIndex) {
     const totalQuestionsAnswered = (currentLevel - 1) * 100 + currentQuestionIndex + 1;
     if (totalQuestionsAnswered % 100 === 0) {
       playSound("hundredComplete");
-      showHundredCompletePopup();
     }
 
     playSound("correct");
@@ -195,14 +194,6 @@ function showTenRightPopup() {
   setTimeout(() => {
     popup.classList.add("hidden");
   }, 1500);
-}
-function showHundredCompletePopup() {
-  const popup = document.getElementById("hundred-complete-popup");
-  popup.classList.remove("hidden");
-
-  setTimeout(() => {
-    popup.classList.add("hidden");
-  }, 5000); // 5 seconds visible
 }
 
 // ==== TIMER ====
