@@ -8,6 +8,7 @@ const scoreDisplay = document.getElementById("score-display");
 const levelDisplay = document.getElementById("level-display");
 const muteBtn = document.getElementById("mute-btn");
 const timerDisplay = document.getElementById("timer");
+const tenRightPopup = document.getElementById("ten-right-popup");
 
 // ==== GLOBAL VARIABLES ====
 let currentLevel = 1;
@@ -122,18 +123,23 @@ function showQuestion() {
 function checkAnswer(selectedIndex) {
   stopTimer();
   const q = questions[currentQuestionIndex];
+
   if (selectedIndex === q.correct) {
     score++;
-  if (score % 10 === 0) {
-    playSound("tenRight");
-    showTenRightPopup();
-  }
+
+    // ✅ 10 correct answers popup and sound
+    if (score > 0 && score % 10 === 0) {
+      playSound("tenRight");
+      showTenRightPopup();
+    }
+
     playSound("correct");
   } else {
     playSound("wrong");
   }
 
   currentQuestionIndex++;
+
   if (currentQuestionIndex < questions.length) {
     showQuestion();
   } else {
