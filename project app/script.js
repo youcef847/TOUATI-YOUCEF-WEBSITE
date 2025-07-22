@@ -165,23 +165,25 @@ function handleLevelComplete() {
     console.log("🎉 100 questions completed!");
     playSound("hundredComplete");
 
-    // Show celebration screen
+    // ✅ Show celebration screen
+    console.log("✅ Showing celebration screen for 10 seconds...");
     document.getElementById("quiz-container").classList.add("hidden");
     document.getElementById("celebration-screen").classList.remove("hidden");
 
-    // Wait 10 seconds, then go to next level
+    // ✅ Wait 10 seconds, then go to next level
     setTimeout(() => {
+      console.log("➡️ 10 seconds passed. Loading next level...");
       document.getElementById("celebration-screen").classList.add("hidden");
       quizContainer.classList.remove("hidden");
       currentLevel++;
       saveProgress();
       loadLevel(currentLevel);
-    }, 10000);
+    }, 10000); // 10 seconds
 
-    return; // ✅ Prevents continuing to next block
+    return; // ✅ Stop here so the level doesn't load early
   }
 
-  // Regular level complete: just load next level
+  // Regular level complete
   currentLevel++;
   saveProgress();
   loadLevel(currentLevel);
