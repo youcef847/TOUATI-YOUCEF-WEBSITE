@@ -126,10 +126,15 @@ function checkAnswer(selectedIndex) {
   if (selectedIndex === q.correct) {
     score++;
 
-    // ✅ 10 correct answers popup and sound
-    if (score > 0 && score % 10 === 0) {
+    if (score % 10 === 0) {
       playSound("tenRight");
       showTenRightPopup();
+    }
+
+    const totalQuestionsAnswered = (currentLevel - 1) * 100 + currentQuestionIndex + 1;
+    if (totalQuestionsAnswered % 100 === 0) {
+      playSound("hundredComplete");
+      showHundredCompletePopup();
     }
 
     playSound("correct");
@@ -138,7 +143,6 @@ function checkAnswer(selectedIndex) {
   }
 
   currentQuestionIndex++;
-
   if (currentQuestionIndex < questions.length) {
     showQuestion();
   } else {
