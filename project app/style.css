@@ -23,7 +23,6 @@ html, body {
 
 /* === Intro & End Screens === */
 #end-screen,
-#celebration-screen,
 #final-good-ending,
 #final-bad-ending {
   display: none;
@@ -33,6 +32,26 @@ html, body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   animation: slideUp 0.7s ease-in-out;
   text-align: center;
+}
+
+#celebration-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: none;
+  background: linear-gradient(160deg, #fff8e1, #ffe0b2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.7s ease-in-out;
+  text-align: center;
+  padding: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* === Quiz Container === */
