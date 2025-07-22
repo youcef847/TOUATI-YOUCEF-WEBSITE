@@ -182,6 +182,14 @@ function showTenRightPopup() {
     popup.classList.add("hidden");
   }, 1500);
 }
+function showHundredCompletePopup() {
+  const popup = document.getElementById("hundred-complete-popup");
+  popup.classList.remove("hidden");
+
+  setTimeout(() => {
+    popup.classList.add("hidden");
+  }, 5000); // 5 seconds visible
+}
 
 // ==== TIMER ====
 function startTimer(callback) {
