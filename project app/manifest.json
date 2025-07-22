@@ -1,11 +1,14 @@
-﻿{
+{
   "name": "سؤال وجواب - Quiz App",
   "short_name": "سؤال وجواب",
-  "start_url": "index.html",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ff9800",
   "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "ar",
   "icons": [
     {
       "src": "assets/icons/icon-192.png",
@@ -17,6 +20,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "lang": "ar"
+  ]
 }
