@@ -122,7 +122,11 @@ function showQuestion() {
 function checkAnswer(selectedIndex) {
   stopTimer();
   const q = questions[currentQuestionIndex];
-
+  // ✅ Prevent crash if question doesn't exist (double click, etc.)
+  if (!q) {
+    console.warn("⚠️ No question at current index. Ignoring click.");
+    return;
+  }
   if (selectedIndex === q.correct) {
     score++;
 
@@ -155,29 +159,35 @@ function handleWrongAnswer() {
 }
 
 function handleLevelComplete() {
+  const totalQuestionsAnswered = (currentLevel - 1) * 100 + currentQuestionIndex;
 
-  if (currentLevel % 10 === 0) {
+  // ✅ Check if it's time to show celebration (100 questions)
+  if (totalQuestionsAnswered % 100 === 0) {
+    console.log("🎉 100 questions completed!");
     playSound("hundredComplete");
 
     // Show celebration screen
     document.getElementById("quiz-container").classList.add("hidden");
     document.getElementById("celebration-screen").classList.remove("hidden");
 
-    // After 10 seconds, go to next level
+    // Wait 10 seconds, then go to next level
     setTimeout(() => {
       document.getElementById("celebration-screen").classList.add("hidden");
-      document.getElementById("quiz-container").classList.remove("hidden");
       quizContainer.classList.remove("hidden");
       currentLevel++;
       saveProgress();
       loadLevel(currentLevel);
     }, 10000);
-  } else {
-    currentLevel++;
-    saveProgress();
-    loadLevel(currentLevel);
+
+    return; // ✅ Prevents continuing to next block
   }
+
+  // Regular level complete: just load next level
+  currentLevel++;
+  saveProgress();
+  loadLevel(currentLevel);
 }
+
 function showTenRightPopup() {
   const popup = document.getElementById("ten-right-popup");
   popup.classList.remove("hidden");
