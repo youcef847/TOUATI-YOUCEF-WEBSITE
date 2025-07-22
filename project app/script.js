@@ -26,8 +26,8 @@ const sounds = {
   intro: new Audio("assets/sounds/intro.mp3"),
   levelComplete: new Audio("assets/sounds/level-complete.mp3"),
   hundredComplete: new Audio("assets/sounds/hundred-complete.mp3"),
-  goodEnding: new Audio("assets/sounds/good-ending.mp3")
-  tenRight: new Audio("assets/sounds/ten-right.mp3"),
+  goodEnding: new Audio("assets/sounds/good-ending.mp3"),
+  tenRight: new Audio("assets/sounds/ten-right.mp3")
 };
 function playSound(name) {
   if (!muted && sounds[name]) {
