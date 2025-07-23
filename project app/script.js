@@ -186,7 +186,7 @@ function handleLevelComplete() {
   if (currentLevel >= 10) {
   console.log("🎬 Game finished — evaluating final ending...");
   endGame();
-} else {
+  else {
   currentLevel++;
   saveProgress();
   loadLevel(currentLevel);
