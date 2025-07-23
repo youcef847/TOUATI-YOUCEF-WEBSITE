@@ -26,6 +26,7 @@ const sounds = {
   intro: new Audio("assets/sounds/intro.mp3"),
   hundredComplete: new Audio("assets/sounds/hundred-complete.mp3"),
   goodEnding: new Audio("assets/sounds/good-ending.mp3"),
+  badEnding: new Audio("assets/sounds/bad-ending.mp3"),
   tenRight: new Audio("assets/sounds/ten-right.mp3")
 };
 function playSound(name) {
@@ -160,38 +161,35 @@ function handleWrongAnswer() {
 function handleLevelComplete() {
   const totalQuestionsAnswered = (currentLevel - 1) * 100 + currentQuestionIndex;
 
-  // ✅ Check if it's time to show celebration (100 questions)
+  // ✅ Final level completed
+  if (currentLevel === 10) {
+    console.log("🎬 Game finished — evaluating final ending...");
+    endGame(); // Call your final ending handler
+    return; // ⛔ Prevent loading level11.json or celebration
+  }
+
+  // ✅ Every 100 questions except last one
   if (totalQuestionsAnswered % 100 === 0) {
     console.log("🎉 100 questions completed!");
     playSound("hundredComplete");
 
-    // ✅ Show celebration screen
-    console.log("✅ Showing celebration screen for 10 seconds...");
     document.getElementById("quiz-container").classList.add("hidden");
     document.getElementById("celebration-screen").classList.remove("hidden");
 
-    // ✅ Wait 10 seconds, then go to next level
     setTimeout(() => {
-      console.log("➡️ 10 seconds passed. Loading next level...");
       document.getElementById("celebration-screen").classList.add("hidden");
       quizContainer.classList.remove("hidden");
       currentLevel++;
       saveProgress();
       loadLevel(currentLevel);
-    }, 10000); // 10 seconds
-
-    return; // ✅ Stop here so the level doesn't load early
+    }, 10000);
+    return;
   }
 
-  if (currentLevel >= 10) {
-  console.log("🎬 Game finished — evaluating final ending...");
-  endGame();
-}
-  else {
+  // ✅ Regular level complete
   currentLevel++;
   saveProgress();
   loadLevel(currentLevel);
-}
 }
 
 function endGame() {
