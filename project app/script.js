@@ -161,32 +161,37 @@ function handleWrongAnswer() {
 function handleLevelComplete() {
   const totalQuestionsAnswered = (currentLevel - 1) * 100 + currentQuestionIndex;
 
-  // ✅ Final level completed
+  // ✅ Final level completed — show good/bad ending
   if (currentLevel === 10) {
     console.log("🎬 Game finished — evaluating final ending...");
-    endGame(); // Call your final ending handler
-    return; // ⛔ Prevent loading level11.json or celebration
+    endGame();
+    return;
   }
 
-  // ✅ Every 100 questions except last one
+  // ✅ Every 100 questions — celebration time!
   if (totalQuestionsAnswered % 100 === 0) {
     console.log("🎉 100 questions completed!");
     playSound("hundredComplete");
 
-    document.getElementById("quiz-container").classList.add("hidden");
+    // Hide quiz, show celebration
+    quizContainer.classList.add("hidden");
     document.getElementById("celebration-screen").classList.remove("hidden");
 
+    // Wait 10 seconds then move to next level
     setTimeout(() => {
+      console.log("⏭ Moving to next level...");
       document.getElementById("celebration-screen").classList.add("hidden");
       quizContainer.classList.remove("hidden");
+
       currentLevel++;
       saveProgress();
       loadLevel(currentLevel);
     }, 10000);
-    return;
+
+    return; // ⛔ Prevent any other loading now
   }
 
-  // ✅ Regular level complete
+  // ✅ Otherwise: next level directly
   currentLevel++;
   saveProgress();
   loadLevel(currentLevel);
