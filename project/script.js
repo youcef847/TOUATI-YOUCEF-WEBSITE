@@ -213,6 +213,7 @@ function endGame() {
   } else {
     badEnding.classList.remove("hidden");
     goodEnding.classList.add("hidden");
+    playSound("badEnding");
   }
 
   // Optional: clear saved progress to restart fresh next time
